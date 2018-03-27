@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tagged Templates</title>
+  <style>
+    abbr {
+      border-bottom:1px dotted grey;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bio">
+
+  </div>
+
+<script>
+  const dict = {
+    HTML: 'Hyper Text Markup Language',
+    CSS: 'Cascading Style Sheets',
+    JS: 'JavaScript'
+  };
+ 
+  // we want on hover, of the html css shit, to show the value in the dict
+  function addAbbreviations(strings, ...values) {
+    // make sure we have the correct values to target
+    const abbreviated = values.map(value =>{
+      if(dict[value]){
+        return `<abbr title='${dict[value]}'>${value}</abbr>`
+      }
+      return value;
+    });
+    console.log(abbreviated);
+    // reduce loops over the string and build as we go
+    return strings.reduce((sentence, string, i)=>{
+      console.log(abbreviated[i]);
+      return `${sentence}${string}${abbreviated[i]||''}`
+    }, '');
+  }
+
+  const first = 'Wes';
+  const last = 'Bos';
+
+  const sentence = addAbbreviations`hello, my name is ${first} ${last} and I love to code ${'HTML'}, ${'CSS'} and ${'JS'} `;
+
+  const bio = document.querySelector('.bio');
+  const p = document.createElement('p');
+  p.innerHTML = sentence;
+  bio.appendChild(p);
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Default Arguments</title>
+</head>
+<body>
+<script>
+  // function calculateBill(total, tax = 0.13, tip = 0.15) {
+  //   return total + (total * tax) + (total * tip);
+  // }
+
+  // const totalBill = calculateBill(100, undefined, 0.25);
+  // console.log(totalBill);
+
+  // holy shit so if nothing is passed in for tax in tip when we call it, we can assume the tax and tip rate in the actual fucntion expression what the fuck 
+  function calculateBill(total, tax = 0.13, tip = 0.15) {
+    // since we only have the first param now we can do
+    // if (tax === undefined) {
+    //   tax = 0.13;
+    // }
+    // // or you could do 
+    // tax = tax || 0.13; //meaning tax is tax or if its undefined set it to 0.13
+    // // u cna do that but hes like nah
+    // if (tip === undefined) {
+    //   tip = 0.15;
+    // }
+    
+    return total + (total * tax) + (total * tip);
+  }
+
+  // if u wanna just change the total aan dtip rate, you can pass in 100, undefined, newtiprate 
+  const totalBill = calculateBill(100);
+  // if we only passed 100 as the arg its gonna return nan cuz there are this we didnt pass in, but we wanna assume a 13% tax and 15% tip rate, so we took that off the arguments
+  console.log(totalBill);
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const real world</title>
+</head>
+<body>
+<script>
+  // the window actually has a name attribute so if you made a global variable it might fck it up so what you could do is to run an IIFE and have the variable scoped to that
+  (function() {
+    // this variable will now not be avail globally
+    var name = 'wes';
+  })();
+
+  // for let and const, we dont need an IIFE because they are block scoped
+  {
+    const name = 'wes';
+    console.log(name);
+  }
+
+
+  for(let i = 0; i < 10; i++) {
+    console.log(i);
+    setTimeout(function() {
+      //  if it was using var, you will see an output of the number is 10, 10 times because the variable i is being overwritten everyime by the time the first setTime out runs, the i variable is already at the end 
+      // by changing var to let which is block scoped it will scope the i to the for loop
+      console.log('The number is ' + i);
+    },1000);
+  }
+
+  // if the thing in the for loop was var , 
+  // in the console you could call i and it's going to spit out 10 so first issue is that the variable has leaked out
+
+</script>
+</body>
+</html>

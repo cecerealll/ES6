@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>When _not_ to use arrows =></title>
+</head>
+<body>
+<style>
+  button { font-size: 100px; }
+  .on { background: #ffc600; }
+</style>
+<button id="pushy">Push Me</button>
+
+<script>
+  // When you really need `this`
+  // define button, listen for click, do something
+  const button = document.querySelector('#pushy');
+  button.addEventListener('click', function() {
+    console.log(this);
+    // dont wanna use arrow function here cuz it's not bound to the function
+    this.classList.toggle('on');
+  });
+
+  // When you need a method to bind to an object
+  const person = {
+    points: 23,
+    score() {
+      console.log(this);
+      this.points++;
+      //  dont wanna use arrow us this = window same non binding
+      // also could do score = function() {}
+    }
+  } 
+
+  // When you need to add a prototype method
+  // i think it's kind making a mold  of somethign this class so its like ok inthe class of car there is a make and color and we defined what make is
+  class Car {
+    constructor(make, colour) {
+      this.make = make;
+      this.colour = colour;
+    }
+  }
+
+  // this kinda makes sense, defined a new variable and we said ok this is a car class so the make is bmw and the color is blue 
+  const beemer = new Car('bmw', 'blue');
+  const subie = new Car('Subaru', 'white');
+
+  // problem here is we are trying to use the prototype function of summarize but the arrow function is unbinding meaning it wll use the parent scope
+  // function he made to just summarize the classes, in this case if u use arrow funciton it wont work because it is not bound to the the Car object but rather to window so . 
+  Car.prototype.summarize = function() {
+     return `This car is a ${this.make} in the colour ${this.colour}`;
+  };
+
+  // When you need arguments object
+  const orderChildren = function() {
+    // arguments (returns an arraylike object of  arguments passed into function) keyword will not work if you use an arrowfunction
+    const children = Array.from(arguments);
+    console.log(arguments);
+    
+    return children.map((child, i) => {
+      return `${child} was child #${i + 1}`;
+    })
+  }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+<body>
+<script>
+  const key = 'abc123';
+  let points = 50;
+  let winner = false;
+  //  scoped to window
+  if (points >40) {
+    console.log('it ran');
+    let winner = true;
+    // scoped to block
+    // if you called the winnder varialble in the console it is going to return false and that';s because the winner outside of the if statement and inside of the if statements are actually different, they have the same name but are differently scoped
+  }
+
+  //  a lot of people thing objects are immutable thats just not tru because you can always update the person obj u just cant reaassign 
+  const person = {
+    name: 'Wes',
+    age: 28
+  }
+
+  // what this does is if you updated the value of a certain property 
+  // wes.age = 30,  adn then you call the wes object, it's going to still show 28
+  const wes = Object.freeze(person);
+
+</script>
+</body>
+</html>

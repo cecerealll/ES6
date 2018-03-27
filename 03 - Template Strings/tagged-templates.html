@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tagged Templates</title>
+  <style>
+    .hl {
+      background: #ffc600;
+    }
+  </style>
+</head>
+<body>
+<script>
+  // function highlight(strings, ...values) {
+  //   let str = '';
+  //   strings.forEach((string, i) => {
+  //     str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
+  //   });
+  //   return str;
+  // }
+
+  // const name = 'Snickers';
+  // const age = 100;
+
+  // const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+  // document.body.innerHTML = sentence;
+  // console.log(sentence);
+
+  // the browser is gonna run this function and provide all th einformation sentence has
+  // by using ...value it's going to take the rest of the values that are passed to the argumenta nd amke an array for us
+  function highlight(strings, ...values) {
+    // return 'cool';
+    // looking at the debugger the local prop is split into, this.window, strings array and the values array which is what we pass in as arguments essentially (the sring array is always one longer than the values)
+    // debugger
+    let str = '';
+    strings.forEach((string, i)=> {
+      // he used += to keep updating the sentence
+      // if he just used = it wouldve no added together
+      // to fix the undefined problem, you can ust add add the or operator for an empty string if values[i] is undefined
+      // str += string + (values[i] || '') ;
+      str += `${string}<span contenteditable class='hl'>${values[i] || ''}</span>`; 
+      // console.log(values);
+      // console.log(str)
+      // console.log(string);
+    });
+    return str;
+    
+  }
+  const name = 'Snickers';
+  const age = 100;
+  // by putting the "highlight" infront of the sentence it's "tagging it"
+  const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+  document.body.innerHTML = sentence;
+  console.log(sentence);
+
+  // takeaway
+  // have a string, pass inthe reg string u want, get all the pieces and it's up to you tpo craft it together and to return some sort of modified data
+
+  
+  
+
+</script>
+</body>
+</html>

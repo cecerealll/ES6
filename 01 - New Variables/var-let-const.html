@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+<body>
+<script>
+  function setWidth() {
+    var width = 100; 
+    console.log(width);
+  } 
+  setWidth();
+
+  var age = 100;  
+  if(age > 12) {
+    // if this is var then dogYears will be defined globally
+    const dogYears = age * 7;
+    // in this case  if you type the variable dogYears in the console it will acutally be defined, reason behind that being var is function scoped and the iff statement is not a function therefore it is globally scoped
+    console.log(`You are ${dogYears} dog years old!`);
+  }
+
+  let height = 200;
+  const key = 'abc123'; 
+</script>
+</body>
+</html>

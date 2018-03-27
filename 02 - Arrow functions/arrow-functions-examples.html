@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow functions examples</title>
+</head>
+<body>
+<script>
+
+  const race = '100m Dash';
+  const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+
+// return an object with map, i is passed thru as index
+// when you wanna implicit return but you need the curly braces in there because u want your results to be an object add parantheses around, it indicates you want ot return an object literal, index is 0 based so you gotta add 1 so place starts with 1, win will be an array of objects, ES6 prop is if you have  a variable and value of the same name u could just type it once
+  const win = winners.map((winner, i) => ({name: winner, race, place: i + 1}));
+
+
+  const ages = [23,62,45,234,2,62,234,62,34];
+
+  const old = ages.filter(age => age >= 60);
+  console.log(old);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow Functions</title>
+</head>
+<body>
+
+  <style>
+    .wrap {
+      min-height: 100vh;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      font-weight: 100;
+      color:white;
+    }
+
+    .box {
+      background:black url(https://unsplash.it/1500/1500?image=560&blur=0.5) center fixed no-repeat;
+      width:50px;
+      height:50px;
+      padding:50px;
+      transition: width 0.2s, height 0.6s;
+      position: relative;
+    }
+
+    .box.opening {
+      width:500px;
+      height:500px;
+    }
+
+    .box h2 {
+      position: absolute;
+      width:100%;
+      font-size: 100px;
+      transform:translateX(-200%);
+      transition: all 0.5s;
+      top:0;
+    }
+
+    .box p {
+      position: absolute;
+      width:100%;
+      transform:translateX(200%);
+      transition: all 0.5s;
+      bottom:0;
+    }
+
+    .box.open > * {
+      transform:translateX(0%);
+    }
+  </style>
+
+  <div class="wrap">
+    <div class="box">
+      <h2>Wes Bos</h2>
+      <p class="social">@wesbos</p>
+    </div>
+  </div>
+
+  <script>
+    // const box = document.querySelector('.box');
+    // box.addEventListener('click', function() {
+    //   let first = 'opening';
+    //   let second = 'open';
+
+    //   if(this.classList.contains(first)) {
+    //     [first, second] = [second, first];
+    //   }
+
+    //   this.classList.toggle(first);
+    //   setTimeout(() => {
+    //     console.log(this);
+    //     this.classList.toggle(second);
+    //   }, 500);
+    // });
+
+    const box = document.querySelector('.box'); 
+    console.log(box);
+    // waiting for someone to click it
+    box.addEventListener('click', function(){
+      //  in this setting, this return  as the box
+      // however if you used an arrow function, this refers to window
+      // when you use arrow functions the value of this is not rebound inside of that function rather it is inherited from the parent function which is window
+      console.log(this);
+      var self = this;
+      
+      // classlist is a property that lives on elements 
+      this.classList.toggle(first);
+      //  but inside of this function you CAN use arrow functions so that it continues inherit the this scoped to the function which is in reference to box
+      // setTimeout(function(){
+      //   // this will not work because the this keyword is now window, because thsi function is not bound to box like the addeventlistener one so it is bound to window 
+      //   // what you could do before is set a variable of self in the add evenlistenter function  and then in the settime out use self
+      //   self.classList.toggle('open');
+      // }, 500);
+
+      // this is him fixing th animation problems, so that when the square closes it's smooth af 
+      let first = 'opening';
+      let second = 'open';
+      if(this.classList.contains(first)){
+        // if it already containsthe class of opening 
+        // then you wanna switch the order of the 2 classes toggling happening so the animation looks better
+        // a lil destructuring action but
+        [first, second] = [second, first];
+        //  so now first will be equal to open and second will be equal to opening which is why we used let
+      }
+      setTimeout(()=>this.classList.toggle(second) ,500)
+    })
+  </script>
+
+</body>
+</html>
