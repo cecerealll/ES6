@@ -15,12 +15,19 @@
     };
     return converted;
   }
+  const {USD, GPB, AUD, MEX} = convertCurrency(100); 
+  // or you can pick and choose which variables you want returned
 
-  function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
-    return total + (tip * total) + (tax * total);
+  // we can make the params total independent by wrapping the arguments in {}
+  function tipCalc({total=100, tip=0.15, tax=0.13} ={}) {
+    return total + (tip*total) + (tax*total);
   }
+  // function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
+  //   return total + (tip * total) + (tax * total);
+  // }
 
   const bill = tipCalc({ tip: 0.20, total: 200 });
+  // issue with destructuring is that if you pass in no params then its gonna throw an error BUT you can give the destructured object itself a default of {} LOOOL  and then the defaults will be passed in
   console.log(bill);
 
 </script>

@@ -18,20 +18,40 @@
 <script>
   const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
 
-  // for (const [i, cut] of cuts.entries()) {
-  //   console.log(`${cut} is the ${i + 1} item`);
-  // }
+  // we can iterate over the array.entries and we would have access  to the index number as well
+  // we destructured the cut so that we can access the index and value independently
+  for (const [i, cut] of cuts.entries()) {
+    console.log(`${cut} is the ${i + 1} item`);
+  }
 
-  // function addUpNumbers() {
-  //   let total = 0;
-  //   for (const num of arguments) {
-  //     total += num;
+  // for example  we have a function and we dont know how many arguments are gonna get passed into it
+  function addUpNumbers() {
+    // we can use the arguments keyword and it will give us the arguments passed into it later when the function is called, and it gives an arraylike thing
+    let total = 0; 
+    // of we used for in loop here it iwll return index (whch for some reason showed 0012345, for of with give us the argument values
+    // if we use for of here there is no need to convert it into an array
+    for (const num of arguments) {
+      total += num;
+    }
+    console.log(total);
+    return total;
+  }
+
+  addUpNumbers(10,23,52,34,12,13,123);
+
+  // for (let i = 0; i <= 100; i++) {
+  //     if (i % 5 === 0 && i % 3 === 0) {
+  //       console.log('fizzbuzz');
+  //     } else if (i% 3 ===0) {
+  //       console.log('fizz');
+  //     } else if (i% 5 ===0) {
+  //       console.log('buzz');
+  //     } else {
+  //       console.log(i);
+  //     }
   //   }
-  //   console.log(total);
-  //   return total;
-  // }
 
-  // addUpNumbers(10,23,52,34,12,13,123);
+  //   Array.apply(null, { length: 100 }).forEach((item, i) => console.log((i % 3 == 0 ? 'Fizz' : '') + (i % 5 == 0 ? 'Buzz' : '') || (i + 1)));
 
   // const name = 'Wes Bos';
   // for (const char of name) {
@@ -41,7 +61,7 @@
   const ps = document.querySelectorAll('p');
   for (const paragraph of ps) {
     paragraph.addEventListener('click', function() {
-      console.log(this.textContent);
+      console.log(this);
     });
   }
 
