@@ -178,10 +178,32 @@
      }
   ];
   const code = 'VBgtGQcSf';
-  const post = posts.find(post => post.code === code);
 
-  const postIndex = posts.findIndex(post => post.code === code);
-  console.log(postIndex);
+  //  long version
+  // const post = posts.find(post => {
+  //   // console.log(post.code);
+  //   if (post.code=== 'VBgtGQcSf'){
+  //     return true;
+  //   } 
+  //   return false;
+  // })
+
+  // short version
+  const post = posts.find(post=> post.code === code);
+  console.log(post);
+
+
+  // findIndex so we know where to delete
+  const postIndex = posts.findIndex(post => {
+    if (post.code === code){
+      return true; 
+    }
+    return false;
+  })
+
+
+
+
 
 </script>
 </body>
