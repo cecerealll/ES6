@@ -18,50 +18,46 @@
     { name: 'Addy Osmani', twitter: '@addyosmani', bio: 'Googler' },
   ];
 
-  function getPostById(id) {
-    // create a new promise
-    return new Promise((resolve, reject) => {
-      // using a settimeout to mimick a databse
-      setTimeout(() => {
-        // find the post we want
+  // create 2 separate functions that are gonna return promises
+  function getPostbyId(id){
+    // return a promis where we look thru the posts array and find the id that matches what was passsed in the funciton, if we find it we will resolve with the actual post if not, throw an error, and wrap a set time out around ti to mimic time taken to get data
+    return new Promise((resolve, reject) =>{
+    setTimeout(()=> {
         const post = posts.find(post => post.id === id);
-        if(post) {
-          resolve(post); // send the post back
+        if(post){
+          resolve(post);
         } else {
-          reject(Error('No Post Was Found!'));
+          reject(Error('no post was found'));
         }
-      }, 200);
+      }, 1000);
     });
   }
 
   function hydrateAuthor(post) {
-    // create a new promise
-    return new Promise((resolve, reject) => {
-      // find the author
-      const authorDetails = authors.find(person => person.name === post.author);
-      if(authorDetails) {
-        // "hydrate" the post object with the author object
+    return new Promise((resolve, reject)=> {
+      const authorDetails = authors.find(author => author.name === post.author)
+      if(authorDetails){
+        // we are replacing the author name in the posts array with all of the author deets
         post.author = authorDetails;
-        resolve(post);
+        resolve(post)
       } else {
-        reject(Error('Can not find the author'));
+        reject(Error('u suck'));
       }
-    });
+    })
   }
 
-  getPostById(3)
-    .then(post => {
-      return hydrateAuthor(post);
-    })
-    .then(post => {
+  getPostbyId(2)
+    .then(post=>{
       console.log(post);
-    })
-    .catch(err => {
+      // if we return a promise inside of a .then() we can chain it with another .then()
+      return hydrateAuthor(post);
+    }).then(post => {
+      console.log(post);
+    }).catch(err => {
       console.error(err);
-    });
+    }) ;
 
-
-
+    
 </script>
 </body>
 </html>
