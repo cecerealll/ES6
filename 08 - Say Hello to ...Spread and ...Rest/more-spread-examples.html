@@ -11,8 +11,9 @@
     <p>Randy</p>
   </div>
 <script>
-  const people = Array.from(document.querySelectorAll('.people p'));
-  const names = people.map((person) => person.textContent );
+  const people = document.querySelectorAll('.people p');
+  // could also do Array.from
+  const names = [...people].map(person => person.textContent);
 
   const deepDish = {
     pizzaName: 'Deep Dish',
@@ -20,20 +21,28 @@
     ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
   };
 
-  const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
-  // console.log(shoppingList);
+  const shoppingList = ['milk', 'flour', ...deepDish.ingredients]
+  console.log(shoppingList);
 
+  // when we have an array of objects and we wanna remove one of those objects
   const comments = [
     { id: 209384, text: 'I love your dog!' },
     { id: 523423, text: 'Cuuute! 🐐' },
     { id: 632429, text: 'You are so dumb' },
     { id: 192834, text: 'Nice work on this wes!' },
   ];
-  const id = 632429;
-  const commentIndex = comments.findIndex(comment => comment.id === id);
 
-  const newComments = [...comments.slice(0,commentIndex), ...comments.slice(commentIndex + 1)];
-  console.log(newComments);
+  // find out where in the array is the comment, use the .findindex method
+  const id = 632429;
+  const find = comments.findIndex(index => index.id === id);
+
+  // to remove the actual comment, we made a new comments array that slices everything up to the  mean comment and slices everything after the mean comment
+  // if we dont use the slice operator here, it will return an array of 2 arrys
+  // first array will contain the first 2 comments and the 2nd  array containst he last array
+  const newComments = [...comments.slice(0, find), ...comments.slice(find+1)];
+
+
+
 
 </script>
 </body>
