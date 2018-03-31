@@ -6,22 +6,24 @@
 </head>
 <body>
 <script>
-  // function convertCurrency(rate, tax, tip, ...amounts) {
-  //   console.log(rate, tax, tip, amounts);
-  //   return amounts.map(amount => amount * rate);
-  // }
+  // this function will take an unknown amt of currency, u might wanna use arguments but the problem here is we wanna make sure the first argument is the rate and the rest is the amt they wanna convert
+  // the ...amounts will grab the rest of the args
+  function convertCurrency(rate, tax, tip, ...amounts){
+    // this shows the first param, and then the rest in an array
+    console.log(rate, amounts);
+    return amounts.map(amount => amount*rate);
+  }
+  
+  const amounts = convertCurrency(1.54, 10, 23, 53, 1, 56 );
 
-  // const amounts = convertCurrency(1.54, 10, 23, 52, 1, 56);
-  // console.log(amounts);
 
-  const runner = ['Wes Bos', 123, 5.5, 5, 3, 6, 35];
+  // now we looking at second scenario, destructuring
+  const runner = ['cece fan', 123, 5.5, 5, 3, 6, 35];
+  // assuming first is name, second is runner id and the rest of km's ran;
   const [name, id, ...runs] = runner;
-  console.log(name, id, runs);
 
-  const team = ['Wes', 'Kait', 'Lux', 'Sheena', 'Kelly'];
-  const [captain, assistant, ...players] = team;
-  console.log(captain, assistant, players)
-
+  const team = ['wes', 'tait', 'lux', 'sheena', 'kelly'];
+  const [captain, vp, ...teammates] = team;
 </script>
 </body>
 </html>
