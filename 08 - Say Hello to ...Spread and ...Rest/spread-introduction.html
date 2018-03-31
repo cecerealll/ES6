@@ -10,7 +10,12 @@
   const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
   const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
 
+  // could do this 
+  // const pizzas = featured.concat(specialty);
+
   const pizzas = [...featured, 'veg', ...specialty];
+  // if u wanna make pizzas array and not just refer to the old array, you could either make a anew var and do [].concat(pizzas);
+  // or you could do the below
   const fridayPizzas = [...pizzas];
 
   const deepDish = {
@@ -21,4 +26,4 @@
 
 </script>
 </body>
-</html>
+</html> 
