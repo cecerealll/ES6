@@ -6,20 +6,19 @@
 </head>
 <body>
 <script>
-  const p = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject(Error('Err wes isn\'t cool'));
-    }, 1000);
-  });
 
-  p
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  const p = new Promise((resolve, reject)=> {
+    // that is what is going to be passed back if resolved
+    setTimeout(()=> {
+      reject(Error('wes is cool '));
+    }, 1000)
+  }) 
 
-</script>
+  p.then(data => {
+    console.log(data);
+  }).catch(err=> {
+    console.error(err);
+  })
+</script> 
 </body>
 </html>
