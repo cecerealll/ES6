@@ -18,25 +18,27 @@
   //   }, 500);
   // });
 
-  // Promise
-  //   .all([weather, tweets])
-  //   .then(responses => {
-  //     const [weatherInfo, tweetInfo] = responses;
-  //     console.log(weatherInfo, tweetInfo)
-  //   });
+  // // in some cases you wanna fire them off at the same time cuz theyre not dependent\
+  // Promise.all([weather, tweets]).then(responses =>{
+  //   const [weatherInfo, tweetsInfo] = responses;
+  //   console.log(weather, tweets);
+  // })
 
   const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
   const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
 
   Promise
+    // pass both ouf our fetch statement
     .all([postsPromise, streetCarsPromise])
-    .then(responses => {
-      return Promise.all(responses.map(res => res.json()))
+    // receive responsesm but need in json format
+    .then(resp => {
+      // when both responses come back ,we run a .map on both to turn it form regular data (which can be many others) into json
+      // what this is doing here is that resp is in an array and  we are mapping over each resp and calling a .json() on each which responds with a 2nd promise we are gonna do a .then() on
+      return Promise.all(resp.map(response => response.json()))
     })
-    .then(responses => {
-      console.log(responses);
-    });
-
+    .then(data => {
+      console.log(data);
+    })
 </script>
 </body>
 </html>
