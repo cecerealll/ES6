@@ -8,13 +8,12 @@
 <script>
   const inventors = ['Einstein', 'Newton', 'Galileo'];
   const newInventors = ['Musk', 'Jobs'];
+  // if u just push new Inventors you will get the array as the 4th value
   inventors.push(...newInventors);
-  console.log(inventors);
 
-  const name = ['Wes', 'Bos'];
-
+  const name = ['cece', 'fan',];
   function sayHi(first, last) {
-    alert(`Hey there ${first} ${last}`);
+    alert(`hey there ${first} ${last}`);
   }
 
   sayHi(...name);
