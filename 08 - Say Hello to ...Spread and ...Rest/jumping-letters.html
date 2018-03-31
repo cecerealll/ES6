@@ -16,7 +16,7 @@
       color:white;
       text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
     }
-    .jump span {
+    .jump span { 
       display: inline-block;
       transition: transform 0.2s;
       cursor:url('http://csscursor.info/source/santahand.png'), default;
@@ -28,9 +28,32 @@
 </head>
 <body>
   <h2 class="jump">SPREADS!</h2>
-
 <script>
+  // map, spread, qselectorall
+  // const letters = document.querySelector('h2').textContent;
+  // // console.log([...letters]);
+  // const letterz = [...letters].map(letter => {
+  //   const addSpan = `<span>${letter}</span>`;
+  //   console.log(letters);
+  //   return document.querySelector('h2').innerHTML += `${addSpan}`;
+  // })
+
+  // ok so what i need to do is select the h2, put span on each of the letters, select the spans add a class to each of the spans and add a class on hover i guess
+
+  // grab h2
+  const heading = document.querySelector('.jump');
+
+
+  const spans = sparanWrap(heading.textContent);
+  // simply replace the HTML with your function value
+  heading.innerHTML = spans;
   
+  // make a function  that will take the heading, wrap each letter with a span (the .join gets rid of the comma in between), when happy with it , return it
+  function sparanWrap(word){
+    return [...word].map(letter => `<span>${letter}</span>`).join('')
+  }
+
+ 
 </script>
 </body>
 </html>
