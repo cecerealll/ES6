@@ -11,7 +11,7 @@ const tweets = new Promise((resolve, reject) => {
 });
 
 Promise
-  .all([weather, tweets])
+  .all  ([weather, tweets])
   .then(responses => {
     const [weatherInfo, tweetInfo] = responses;
     console.log(weatherInfo, tweetInfo);
